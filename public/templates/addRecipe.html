@@ -1,0 +1,26 @@
+<div class="addRecipeField" ng-show="addNewRecipeItemBlock">
+	<div class="headRecipeItemBlock">
+		<h1>Note new favorite recipe to the CookBook</h1>
+	</div>
+	<div class="newRecipeBlock">
+		<form role="form" name="newRecipeForm" novalidate>
+			
+			<input type="text" class="inpTitle" ng-model="nameOfNewRecipe" placeholder="Name of the dish" required>
+			<br>
+			
+			<textarea class="descArea" ng-model="recipeDescription" placeholder="Describe the recipe" required></textarea>
+			<br>
+			
+			<label class="uploadBtn">
+				<div class="buttonImgUp">Upload image</div>
+				<input type="file" file-model="myFile">
+			</label>
+			<br>
+			<div class="ctrlBtns">
+			<input type="button" ng-click="addNewRecipeItem(fileOfNewRecipe)" ng-disabled="newRecipeForm.$invalid" value="Add">
+			
+			<input type="button" ng-click="backFromAddRecipe()" value="Back">
+			</div>
+		</form>
+	</div>
+</div>

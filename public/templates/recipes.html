@@ -1,0 +1,46 @@
+<div class="recipesBlock">
+	<div class="recipePage" ng-show="recipeStatus">
+		<section class="cookBookNav">
+			<input class="addRecipeButton" type="button" ng-click="addRecipeBtn()" value="Add Item"> </section>
+		<div class="recipeBook">
+			<div class="recipeItemBlock" ng-repeat="recipeItem in recipesArr | orderBy: 'date'" ng-click="chooseRecipe(recipeItem.id, recipeItem.name, $index, recipeItem.src)">
+				<img src="../img/{{recipeItem.src}}" style="height: 100px; width: auto;">
+						
+				<h4>{{recipeItem.name}}</h4>
+				<p class="dateArea">{{recipeItem.date | date: "hh : mm | dd/MM/yy"}}</p>
+							
+			</div>
+		</div>
+	</div>
+	<div class="chosenRecipeItem" ng-show="chosenRecipeItem">
+		<div class="headRecipeItemBlock">
+			<h1>{{chosenRecipeItemName}}</h1> </div>
+		<div class="recipeItemDetails">
+			<div>
+			 <img class="chosenImg" src="../img/{{chosenRecipeItemSrc}}">
+			<p>{{chosenRecipeItemDescription}}</p>
+			</div>
+			<br>
+			<div class="recipeItemDetailsBtns">
+				<input type="button" value="Edit" ng-click="editRecipeItem()">
+				<input type="button" value="Delete" ng-click="deleteRecipeItem()">
+				<input type="button" value="Back" ng-click="backToTheRecipeList()"> </div>
+		</div>
+		<div ng-show="editRecipeItemStatus" class="editRecipeItemStatus">
+			<h2>Name: </h2>
+			<input type="text" class="inpTitle" ng-model="newNameOfTheRecipeItem">
+			<br>
+			<h2>Recipe: </h2>
+			<textarea class="descArea" ng-model="newInfoOfTheRecipeItem"></textarea>
+			<br> <img src="../img/{{newRecipeItemSrc}}" style="width: 150px; height: auto; margin: 10px auto;">
+			<label class="uploadbutton" ng-click="changeStatusImgUpload()">
+				<div class="buttonImgUp">Upload image</div>
+				<input type="file" file-model="myFile">
+			 </label>
+			<div class="ctrlBtns">
+			<input type="button" ng-click="acceptChanges()" value="Change">
+			<input type="button" value="Close" ng-click="closeChangeBlock()"> </div>
+		</div>
+	</div>
+	<add-recipe-block></add-recipe-block>
+</div>
